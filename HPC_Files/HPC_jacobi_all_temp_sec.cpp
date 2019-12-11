@@ -1,6 +1,4 @@
 #include <string.h>
-#include <fstream>
-#include <sstream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -40,6 +38,14 @@ void initTemps(float **T) {
 }
 
 int main() {
+    printf("Enter width of the plate: ");
+    scanf("%d", &length);
+    printf("Enter the height of the plate: ");
+    scanf("%d", &height);
+    printf("Enter spacing between nodes: ");
+    scanf("%f", &spacing);
+    size_x = (length/spacing) + 1;
+    size_y = (height/spacing);
     float **T=(float**) malloc(size_x *sizeof(float*));
     float **TNew=(float**) malloc(size_x *sizeof(float*));
     for(int i=0; i<size_x *sizeof(float*); i++){
@@ -108,12 +114,12 @@ int main() {
         fprintf(fp2, "\n");
     }
     
-    for(int k=0; k<size_x; k++) {
-        free(T[k]);
-        free(TNew[k]);
-    }
-    free(T);
-    free(TNew);
+//    for(int k=0; k<size_x; k++) {
+//        free(T[k]);
+//        free(TNew[k]);
+//    }
+//    free(T);
+//    free(TNew);
     fclose(fp1);
     fclose(fp2);
     return 0;
